@@ -1,0 +1,38 @@
+# --- Secrets ---
+.github_token
+.env
+*.pem
+
+# --- OS / editor ---
+.DS_Store
+.vscode/
+.idea/
+
+# --- Claude Code local state ---
+.claude/
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+*.egg-info/
+*.egg
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+build/
+dist/
+.venv/
+
+# --- Experiment / pipeline outputs (regenerated, large) ---
+results/
+cloned_repos/
+*.parquet
+dataset/scripts/data/
+dataset/scripts/cloned_repos/
+
+# --- Runtime artifacts ---
+*.out
+*.log
+slurm-*.out
+nohup.out
+*.swp
