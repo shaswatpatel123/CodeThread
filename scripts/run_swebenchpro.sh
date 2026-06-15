@@ -14,7 +14,7 @@ find /scratch/spp9399/.apptainer3/cache/ -mindepth 1 -maxdepth 1 -type d -print0
 find /scratch/spp9399/.apptainer3/work/ -mindepth 1 -maxdepth 1 -type d -print0 | xargs -0 -P 8 -I {} rm -rf "{}"
 
 
-export CUSTOM_DATA_PATH="/scratch/spp9399/MaintainableCoder/minisweagent/experiments/data/swebenchpr_w_problem_statement.csv"
+export CUSTOM_DATA_PATH="../dataset/data/swebenchpro.csv"
 mini-extra swebenchpro \
     --subset swebenchpro \
     --split test \
@@ -36,7 +36,7 @@ find /scratch/spp9399/.apptainer3/cache/ -mindepth 1 -maxdepth 1 -type d -print0
 find /scratch/spp9399/.apptainer3/work/ -mindepth 1 -maxdepth 1 -type d -print0 | xargs -0 -P 8 -I {} rm -rf "{}"
 
 
-export CUSTOM_DATA_PATH="/scratch/spp9399/MaintainableCoder/minisweagent/experiments/data/swebenchpr_w_problem_statement.csv"
+export CUSTOM_DATA_PATH="../dataset/data/swebenchpro.csv"
 mini-extra swebenchpro \
     --subset swebenchpro \
     --split test \
@@ -59,14 +59,14 @@ FIRST_PR_RESULT_PATH=./results/synthetic_glm47_first_swebenchpro
 # 1. Generate synthetic report using synthetic_chains.py
 # ----------------------------------------------------------------------
 echo "Generating synthetic_report.json"
-python3 /scratch/spp9399/MaintainableCoder/minisweagent/experiments/scripts/qwen/run_scripts/utils/synthetic_chains.py "${FIRST_PR_RESULT_PATH}"
+python3 ./utils/synthetic_chains.py "${FIRST_PR_RESULT_PATH}"
 echo "Generated synthetic_report.json"
 
 # ----------------------------------------------------------------------
 # 1. Generate filter-ids using get_instance_ids.py
 # ----------------------------------------------------------------------
 echo "Generating FILTER_IDS ..."
-FILTER_IDS=$(python3 /scratch/spp9399/MaintainableCoder/minisweagent/experiments/scripts/qwen/run_scripts/utils/get_instance_ids.py "${FIRST_PR_RESULT_PATH}")
+FILTER_IDS=$(python3 ./utils/get_instance_ids.py "${FIRST_PR_RESULT_PATH}")
 echo "FILTER_IDS: $FILTER_IDS"
 
 # ----------------------------------------------------------------------
@@ -75,7 +75,7 @@ echo "FILTER_IDS: $FILTER_IDS"
 PATCH_MAP_FILE="${FIRST_PR_RESULT_PATH}/secondPRMapper.json"
 
 echo "Generating init-patch-map JSON ..."
-python3 /scratch/spp9399/MaintainableCoder/minisweagent/experiments/scripts/qwen/run_scripts/utils/generate_2ndPRJson.py "${FIRST_PR_RESULT_PATH}"
+python3 ./utils/generate_2ndPRJson.py "${FIRST_PR_RESULT_PATH}"
 echo "Patch map saved to: $PATCH_MAP_FILE"
 # ----------------------------------------------------------------------
 # 3. Run mini-extra
@@ -88,7 +88,7 @@ find /scratch/spp9399/.apptainer3/tmp/ -mindepth 1 -maxdepth 1 -type d -print0 |
 find /scratch/spp9399/.apptainer3/cache/ -mindepth 1 -maxdepth 1 -type d -print0 | xargs -0 -P 8 -I {} rm -rf "{}"
 find /scratch/spp9399/.apptainer3/work/ -mindepth 1 -maxdepth 1 -type d -print0 | xargs -0 -P 8 -I {} rm -rf "{}"
 
-export CUSTOM_DATA_PATH="/scratch/spp9399/MaintainableCoder/minisweagent/experiments/data/swebenchpr_w_problem_statement.csv"
+export CUSTOM_DATA_PATH="../dataset/data/swebenchpro.csv"
 mini-extra swebenchpro \
     --subset swebenchpro \
     --split test \
@@ -112,7 +112,7 @@ find /scratch/spp9399/.apptainer3/cache/ -mindepth 1 -maxdepth 1 -type d -print0
 find /scratch/spp9399/.apptainer3/work/ -mindepth 1 -maxdepth 1 -type d -print0 | xargs -0 -P 8 -I {} rm -rf "{}"
 
 
-export CUSTOM_DATA_PATH="/scratch/spp9399/MaintainableCoder/minisweagent/experiments/data/swebenchpr_w_problem_statement.csv"
+export CUSTOM_DATA_PATH="../dataset/data/swebenchpro.csv"
 mini-extra swebenchpro \
     --subset swebenchpro \
     --split test \
