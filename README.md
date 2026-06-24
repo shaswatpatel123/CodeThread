@@ -97,10 +97,13 @@ This project builds on [mini-swe-agent](https://github.com/SWE-agent/mini-SWE-ag
 If you use CodeThread, please cite:
 
 ```bibtex
-@article{codethread2026,
-  title   = {Is Agent Code Less Maintainable Than Human Code?},
-  author  = {<authors>},
-  journal = {arXiv preprint arXiv:2509.XXXXX},
-  year    = {2026}
+@misc{patel2026agentcodemaintainablehuman,
+      title={Is Agent Code Less Maintainable Than Human Code?}, 
+      author={Shaswat Patel and Betty Li Hou and Arun Purohit and Kai Xu and Jane Pan and He He and Valerie Chen},
+      year={2026},
+      eprint={2606.21804},
+      archivePrefix={arXiv},
+      primaryClass={cs.SE},
+      url={https://arxiv.org/abs/2606.21804}, 
 }
 ```
