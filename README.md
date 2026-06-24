@@ -1,6 +1,6 @@
 # Is Agent Code Less Maintainable Than Human Code?
 
-[![arXiv](https://img.shields.io/badge/arXiv-2606.21804-b31b1b.svg)](https://arxiv.org/abs/2606.21804)
+[![arXiv](https://img.shields.io/badge/arXiv-2606.21804-b31b1b.svg)](https://arxiv.org/abs/2606.21804) [![HF Dataset](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Dataset-yellow)](https://huggingface.co/datasets/shaswat123/CodeThread)
 
 Maintainability is a core dimension of software engineering, shaping how code is written, reviewed, and developed over time. While coding agents have demonstrated strong performance on single-issue tasks, it remains unclear how maintainable their code is when future agents build on top of it, potentially leading to compounding downstream effects. We investigate how agent code compares to human code in these maintenance settings, presenting **CodeThread**, a framework to construct controlled experiments from repository-level coding benchmarks. Applying CodeThread to four frontier coding agents and four benchmarks, we find that agents are less effective at resolving tasks when building on agent code compared to human code, with task resolve rate drops of up to 13.1%. Regression analysis reveals that many traditional software engineering maintainability metrics do not explain this difference. Instead, the clearest signals are subtler behavioral differences in agent code, such as changes to input validation and error handling, along with differences in downstream code size and task difficulty. These findings highlight the need to evaluate these systems not only by immediate task resolution but also by code maintainability, and point to potential sources of downstream errors introduced by agent code.
 
@@ -17,7 +17,13 @@ Comparing the agent-base arm against the human-base arm isolates the effect of b
 
 The dataset that backs these experiments is built by the two-stage pipeline under [`dataset/scripts/`](dataset/scripts/README.md), which turns any SWE-bench-style benchmark into stubbed tasks with generated problem statements. See [`dataset/scripts/README.md`](dataset/scripts/README.md) for the full walkthrough and instructions on **extending CodeThread to other benchmarks**.
 
-> **Dataset.** The constructed chains and agent trajectories are released on Hugging Face (links above).
+> **Dataset.** The constructed chains are released on Hugging Face at [`shaswat123/CodeThread`](https://huggingface.co/datasets/shaswat123/CodeThread). Download the per-benchmark CSVs from there and place them under `dataset/data/` so the wrapper scripts (`scripts/run_*.sh`) pick them up via `CUSTOM_DATA_PATH` without any path edits:
+>
+> ```bash
+> huggingface-cli download shaswat123/CodeThread --repo-type dataset --local-dir dataset/data
+> ```
+>
+> The wrappers expect the files at `dataset/data/{swebench_verified,swebench_multilingual,swebenchpro,featbench}.csv`. If you keep them elsewhere, update the `CUSTOM_DATA_PATH` variable at the top of each script accordingly.
 
 ## Setup Guide
 
